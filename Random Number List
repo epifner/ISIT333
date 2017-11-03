@@ -1,0 +1,38 @@
+ private void btnWrite_Click(object sender, EventArgs e)
+        {
+            //Declare variables
+            //int randomNumber = 0;
+            int InputNumber = 0;
+            
+            // Create a random object.
+            Random rand = new Random();
+
+            // Get a random integer in the range of 1 through 100
+            InputNumber = rand.Next(1, 5);
+                        
+            // Declare a StreamReader object.
+            StreamWriter outputFile;   
+            
+            // Validate the input textbox control.
+            if (int.TryParse(txtInputNumber.Text, out InputNumber))
+            {
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                // Create the selected file.
+                outputFile = File.CreateText(saveFile.FileName);
+                
+                }
+                else
+                {
+                MessageBox.Show("Operation canceled.");
+                }
+            
+                // Close the file
+                //outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid input. Enter numeric data.", "Input error");
+            }
+
+        }
