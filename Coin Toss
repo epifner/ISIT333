@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Coin_Toss
+{
+    public partial class CoinToss : Form
+    {
+        public CoinToss()
+        {
+            InitializeComponent();
+        }
+
+        private void tossButton_Click(object sender, EventArgs e)
+        {
+            // Variable to indicate which side is up
+            int sideUp = 0;
+            int counterHeads = 0;
+            int counterTails = 0;
+            int totalHeads = 0;
+            int totalTails = 0;
+
+            // Create a random object.
+            Random rand = new Random();
+
+            // Get a random integer in the range of 0 through 1.
+            // 0 means tail is up, 1 means heads up.
+            sideUp = rand.Next(2);
+
+
+            // Display the side that is up: 0 means Tails up, 1 means Heads up.
+
+            /* When you display the appropriate side "up", then increment a counter that is keeping track of the count of that side showing, 
+            and then show that value in a label. You will have a different counter for each side.*/
+
+            if (sideUp == 0)  // then Tails is displayed
+            {
+                // Display Tails up.
+                tailsPictureBox.Visible = true;
+                headsPictureBox.Visible = false;
+
+                counterTails++;
+                
+            }
+                 
+            
+            else       //(if sideUP == 1) then its Heads or true
+            {
+                // Display Heads up.
+                headsPictureBox.Visible = true;
+                tailsPictureBox.Visible = false;
+
+                counterHeads++;
+            
+            }
+
+           
+    
+            //lblHeads.Text = "Tails: " + counterHeads.ToString();
+            //lblTails.Text = "Tails: " + counterTails.ToString();
+
+        // Display the output to label controls.
+        //lblTails.Text = "Tails: " + counterTails.ToString();
+        //lblHeads.Text = "Heads: " + counterHeads.ToString();
+
+    }   // end of tossButton    
+
+
+
+
+
+    private void exitButton_Click(object sender, EventArgs e)
+        {
+            // Close the form.
+            this.Close();
+        }
+
+    }
+}
